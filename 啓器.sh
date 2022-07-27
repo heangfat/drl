@@ -14,7 +14,7 @@ fi
 
 export contName=simreal
 export mtrt=/media/yyr
-docker run -d --rm -p 5555:9999 \
+docker run -d --rm -p 5555:9999 --gpus all \
 	-v $mtrt/program/mujoco:/sr \
 	--env "XAUTHORITY=$XAUTH" \
 	--name $contName \
