@@ -16,7 +16,11 @@ export contName=simreal
 export mtrt=/media/yyr
 docker run -d --rm -p 5555:9999 --gpus all \
 	-v $mtrt/program/mujoco:/sr \
+	--env DISPLAY=$DISPLAY \
+	--env "QT_X11_NO_MITSHM=1" \
+	-v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
 	--env "XAUTHORITY=$XAUTH" \
+	-v "$XAUTH:$XAUTH" \
 	--name $contName \
 	sim_real:latest \
 	sleep infinity
